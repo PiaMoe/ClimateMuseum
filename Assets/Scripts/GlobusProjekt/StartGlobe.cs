@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StartGlobe : MonoBehaviour
 {
-
+    private bool globestatus = false;
+    private GameObject globeinstanz;
     public GameObject globe;
 
     // Start is called before the first frame update
@@ -16,12 +17,29 @@ public class StartGlobe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && globestatus == false)
         {
-           Debug.Log("Button wurde gedrückt");
             // this.globe.transform.position = new Vector3(10, 2, 0);
-            Instantiate(globe, new Vector3(11, 1, 3), Quaternion.identity);
+            //GameObject globeinstanz = Instantiate(globe, new Vector3(11, 1, 3), Quaternion.identity);
+            CreatePrefab();
+            globestatus = true;
+        }
+        else if (Input.GetMouseButtonUp(0) && globestatus == true)
+        {
+            Destroy(globeinstanz);
+            globestatus = false;
         }
 
     }
+
+    public void CreatePrefab()
+        {
+        globeinstanz = Instantiate(globe, new Vector3(11, 1, 3), Quaternion.identity);
+        globeinstanz.SetActive(true);
+        }
+
+    public void DestroyPrefab()
+        {
+        Destroy(globeinstanz);
+        }
 }
