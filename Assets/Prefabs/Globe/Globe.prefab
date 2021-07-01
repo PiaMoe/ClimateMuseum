@@ -22,6 +22,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 972350299118272228}
+  - component: {fileID: 4283750041107614021}
   m_Layer: 0
   m_Name: Globe
   m_TagString: Untagged
@@ -46,6 +47,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4283750041107614021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972350299118272229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b48e2e367024e1c8735ef8ed166b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  temperature: 3.6
+  cow: {fileID: 6454044016924385033, guid: 614c0779e84cef44eb60d483497c9d43, type: 3}
+  cows:
+  - {fileID: 379624761529576613}
+  - {fileID: 971203725962953711}
 --- !u!1 &1875132905929363145
 GameObject:
   m_ObjectHideFlags: 0
@@ -5101,8 +5119,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23019307580939166, guid: 45431b14db90a4c42a15514fb458381e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45431b14db90a4c42a15514fb458381e, type: 3}
+--- !u!23 &379624761529576613 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 23019307580939166, guid: 45431b14db90a4c42a15514fb458381e,
+    type: 3}
+  m_PrefabInstance: {fileID: 366327886627469115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &949044924250626161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5174,8 +5203,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 16.149
       objectReference: {fileID: 0}
+    - target: {fileID: 23019307580939166, guid: 45431b14db90a4c42a15514fb458381e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45431b14db90a4c42a15514fb458381e, type: 3}
+--- !u!23 &971203725962953711 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 23019307580939166, guid: 45431b14db90a4c42a15514fb458381e,
+    type: 3}
+  m_PrefabInstance: {fileID: 949044924250626161}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &972350300974612106
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,6 +5,9 @@ using UnityEngine;
 public class Slider : MonoBehaviour
 {
     public float temperature = 3.6f;
+    public GameObject cow;
+    public MeshRenderer[] cows;
+    private int cowIndex = -1;
 
     // Start is called before the first frame update
     void Start()
@@ -15,7 +18,7 @@ public class Slider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(temperature);
+       // Debug.Log(temperature);
     }
 
     public void Cow(float cownumber)
@@ -26,9 +29,12 @@ public class Slider : MonoBehaviour
                 Debug.Log("Keine Kühe");
                 break;
             case 1:
-                // GameObject Kuh = this.gameObject.transform.GetChild(1).GetChild(0).gameObject;
-                // Kuh.SetActive(true);
+                //GameObject Kuh = this.gameObject.transform.GetChild(1).GetChild(0).gameObject;
+                //Kuh.SetActive(true);
                 // this.gameObject.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
+                //StartGlobe.globeinstanz
+                //Instantiate(cow, new Vector3(0, 0.8f, -0.5f), Quaternion.Euler(-34.5f, 0, 0), this.gameObject.transform);
+               // this.CreateCow();
                 Debug.Log("1 Kuh");
                 temperature += 1f;
                 break;
