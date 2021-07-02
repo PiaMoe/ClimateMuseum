@@ -6,8 +6,9 @@ public class Slider : MonoBehaviour
 {
     public float temperature = 3.6f;
     public GameObject cow;
-    public MeshRenderer[] cows;
-    private int cowIndex = -1;
+    public MeshRenderer[] cows = new MeshRenderer[2];
+    private int cowindex = 0;
+    public GameObject[] cows2; //nur test Array
 
     // Start is called before the first frame update
     void Start()
@@ -21,48 +22,27 @@ public class Slider : MonoBehaviour
        // Debug.Log(temperature);
     }
 
-    public void Cow(float cownumber)
+    public void UpdateCowIndex(bool increment)
     {
-        switch (cownumber) {
-
-            default:
-                Debug.Log("Keine Kühe");
-                break;
-            case 1:
-                //GameObject Kuh = this.gameObject.transform.GetChild(1).GetChild(0).gameObject;
-                //Kuh.SetActive(true);
-                // this.gameObject.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
-                //StartGlobe.globeinstanz
-                //Instantiate(cow, new Vector3(0, 0.8f, -0.5f), Quaternion.Euler(-34.5f, 0, 0), this.gameObject.transform);
-               // this.CreateCow();
-                Debug.Log("1 Kuh");
-                temperature += 1f;
-                break;
-            case 2:
-                Debug.Log("2 Kühe");
-                temperature += 2f;
-                break;
-        }
-    }
-
-    public void Plant(float plantnumber)
-    {
-        switch (plantnumber)
+        Debug.Log("Kuh wird erstellt");
+        
+        if (increment)
         {
-            default:
-                Debug.Log("Keine Pflanzen");
-                break;
-            case 1:
-                Debug.Log("1 Pflanze");
-                temperature -= 1f;
-                break;
-            case 2:
-                Debug.Log("2 Pflanzen");
-                temperature -= 2f;
-                break;
+            cowindex = cowindex + 1;
+            Debug.Log("Erste If Abfrage");
         }
+        else cowindex -= 1;
 
+        if (cowindex < 0)
+        {
+            cowindex = 0;
+            Debug.Log("Zweite If Abfrage");
+        }
+        cows[1].enabled = true;
+        cows2[1].SetActive(true);
     }
 
-    
+
+    //UpdateCowIndex
+    //globeinstanz.transform.GetChild(1).GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
 }

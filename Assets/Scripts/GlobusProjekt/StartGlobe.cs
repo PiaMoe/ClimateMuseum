@@ -23,27 +23,22 @@ public class StartGlobe : MonoBehaviour
 
     public void Cow(float cownumber)
     {
-
         if (globeinstanz == null) return;
 
         switch (cownumber)
         {
 
             default:
-                Debug.Log("Keine Kühe");
+                Debug.Log("Keine K?he");
                 break;
             case 1:
-                //GameObject Kuh = this.gameObject.transform.GetChild(1).GetChild(0).gameObject;
-                //Kuh.SetActive(true);
-                // this.gameObject.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
-                //StartGlobe.globeinstanz
-                //Instantiate(cow, new Vector3(0, 0.8f, -0.5f), Quaternion.Euler(-34.5f, 0, 0), this.gameObject.transform);
-                this.CreateCow();
+
+                globe.GetComponent<Slider>().UpdateCowIndex(true);
                 Debug.Log("1 Kuh");
                 temperature += 1f;
                 break;
             case 2:
-                Debug.Log("2 Kühe");
+                Debug.Log("2 K?he");
                 temperature += 2f;
                 break;
         }
@@ -94,9 +89,13 @@ public class StartGlobe : MonoBehaviour
         Destroy(globeinstanz.gameObject);
         }
 
-    public void CreateCow() //updateCowwIndex
-    {
-       Debug.Log("Kuh wird erstellt");
-       //globeinstanz.transform.GetChild(1).GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
-    }
+
+
+
+    //Cow Methode:
+    //GameObject Kuh = this.gameObject.transform.GetChild(1).GetChild(0).gameObject;
+    //Kuh.SetActive(true);
+    // this.gameObject.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
+    //StartGlobe.globeinstanz
+    //Instantiate(cow, new Vector3(0, 0.8f, -0.5f), Quaternion.Euler(-34.5f, 0, 0), this.gameObject.transform);
 }

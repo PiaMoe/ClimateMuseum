@@ -64,6 +64,9 @@ MonoBehaviour:
   cows:
   - {fileID: 379624761529576613}
   - {fileID: 971203725962953711}
+  cows2:
+  - {fileID: 365327634607531061}
+  - {fileID: 950045793049185151}
 --- !u!1 &1875132905929363145
 GameObject:
   m_ObjectHideFlags: 0
@@ -5061,7 +5064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1287295899898638, guid: 45431b14db90a4c42a15514fb458381e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4054502789990554, guid: 45431b14db90a4c42a15514fb458381e, type: 3}
       propertyPath: m_RootOrder
@@ -5122,10 +5125,16 @@ PrefabInstance:
     - target: {fileID: 23019307580939166, guid: 45431b14db90a4c42a15514fb458381e,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45431b14db90a4c42a15514fb458381e, type: 3}
+--- !u!1 &365327634607531061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1287295899898638, guid: 45431b14db90a4c42a15514fb458381e,
+    type: 3}
+  m_PrefabInstance: {fileID: 366327886627469115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &379624761529576613 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 23019307580939166, guid: 45431b14db90a4c42a15514fb458381e,
@@ -5206,10 +5215,16 @@ PrefabInstance:
     - target: {fileID: 23019307580939166, guid: 45431b14db90a4c42a15514fb458381e,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45431b14db90a4c42a15514fb458381e, type: 3}
+--- !u!1 &950045793049185151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1287295899898638, guid: 45431b14db90a4c42a15514fb458381e,
+    type: 3}
+  m_PrefabInstance: {fileID: 949044924250626161}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &971203725962953711 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 23019307580939166, guid: 45431b14db90a4c42a15514fb458381e,
