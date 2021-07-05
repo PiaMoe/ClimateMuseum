@@ -10,10 +10,11 @@ public class Slider : MonoBehaviour
     private int cowindex = 0;
     public GameObject[] cows2; //nur test Array
 
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("Test Startmethode");
     }
 
     // Update is called once per frame
@@ -38,8 +39,9 @@ public class Slider : MonoBehaviour
             cowindex = 0;
             Debug.Log("Zweite If Abfrage");
         }
-        cows[1].enabled = true;
-        cows2[1].SetActive(true);
+        Debug.Log(cowindex);
+        cows[cowindex].enabled = increment;
+        //cows2[cowindex].SetActive(increment);
     }
 
 
