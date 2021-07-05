@@ -24,15 +24,14 @@ public class StartGlobe : MonoBehaviour
     public void Cow(float cownumber)
     {
         if (globeinstanz == null) return;
-        Debug.Log("cownumber " + cownumber);
+        Debug.Log("cownumber: " + cownumber);
 
         switch (cownumber)
         {
 
             default:
-                Debug.Log("Keine K?he");
                 globeinstanz.UpdateCowIndex(false);
-
+                Debug.Log("Keine Kühe");
                 break;
             case 1:
                 globeinstanz.UpdateCowIndex(true);
@@ -40,7 +39,8 @@ public class StartGlobe : MonoBehaviour
                 temperature += 1f;
                 break;
             case 2:
-                Debug.Log("2 K?he");
+                globeinstanz.UpdateCowIndex(true);
+                Debug.Log("2 Kühe");
                 temperature += 2f;
                 break;
         }
@@ -49,16 +49,21 @@ public class StartGlobe : MonoBehaviour
     public void Plant(float plantnumber)
     {
         if (globeinstanz == null) return;
+        Debug.Log("plantnumber: " + plantnumber);
+
         switch (plantnumber)
         {
             default:
+                globeinstanz.UpdateTreeIndex(false);
                 Debug.Log("Keine Pflanzen");
                 break;
             case 1:
+                globeinstanz.UpdateTreeIndex(true);
                 Debug.Log("1 Pflanze");
                 temperature -= 1f;
                 break;
             case 2:
+                globeinstanz.UpdateTreeIndex(true);
                 Debug.Log("2 Pflanzen");
                 temperature -= 2f;
                 break;

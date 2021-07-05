@@ -5,10 +5,10 @@ using UnityEngine;
 public class Slider : MonoBehaviour
 {
     public float temperature = 3.6f;
-    public GameObject cow;
-    public MeshRenderer[] cows = new MeshRenderer[2];
-    private int cowindex = 0;
-    public GameObject[] cows2; //nur test Array
+    public MeshRenderer[] cows;
+    public MeshRenderer[] trees;
+    private int cowindex = -1;
+    private int treeindex = -1;
 
 
     // Start is called before the first frame update
@@ -29,7 +29,7 @@ public class Slider : MonoBehaviour
         
         if (increment)
         {
-            cowindex = cowindex + 1;
+            cowindex += 1;
             Debug.Log("Erste If Abfrage");
         }
         else cowindex -= 1;
@@ -41,7 +41,22 @@ public class Slider : MonoBehaviour
         }
         Debug.Log(cowindex);
         cows[cowindex].enabled = increment;
-        //cows2[cowindex].SetActive(increment);
+    }
+
+    public void UpdateTreeIndex(bool increment)
+    {
+
+        if (increment)
+        {
+            treeindex += 1;
+        }
+        else treeindex -= 1;
+
+        if (treeindex < 0)
+        {
+            treeindex = 0;
+        }
+        trees[treeindex].enabled = increment;
     }
 
 
