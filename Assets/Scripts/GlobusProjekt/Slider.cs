@@ -4,46 +4,56 @@ using UnityEngine;
 
 public class Slider : MonoBehaviour
 {
-    public float temperature = 3.6f;
     public GameObject cow;
     public MeshRenderer[] cows = new MeshRenderer[2];
-    private int cowindex = 0;
-    public GameObject[] cows2; //nur test Array
+    private int cowindex = -1;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Test Startmethode");
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-       // Debug.Log(temperature);
+      
     }
 
     public void UpdateCowIndex(bool increment)
     {
-        Debug.Log("Kuh wird erstellt");
-        
         if (increment)
         {
             cowindex = cowindex + 1;
-            Debug.Log("Erste If Abfrage");
+            Debug.Log("Erste If Abfrage, cowindex ist: " + cowindex);
+            for (int i = 0; i <= cowindex; i++)
+            {
+                cows[i].enabled = increment;
+            }
+            Debug.Log("Schleife hinzufügen, cowindex ist: " + cowindex + "increment ist: " + increment);
         }
-        else cowindex -= 1;
-
-        if (cowindex < 0)
+        else
         {
-            cowindex = 0;
-            Debug.Log("Zweite If Abfrage");
+            cowindex = cowindex - 1;
+            Debug.Log("Erster Else fall, cowindex ist: " + cowindex);
+            for(int i = cows.Length - 1; i > cowindex; i--)
+            {
+                cows[i].enabled = increment;
+            }
         }
-        Debug.Log(cowindex);
-        cows[cowindex].enabled = increment;
+
+        
     }
 
 
+
+    // if (cowindex< 0)
+     //   {
+       //     cowindex = -1;
+       //     Debug.Log("Zweite If Abfrage, cowindex ist: " + cowindex);
+       // }
+    //cows[cowindex].enabled = increment;
     //UpdateCowIndex
     //globeinstanz.transform.GetChild(1).GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
 }

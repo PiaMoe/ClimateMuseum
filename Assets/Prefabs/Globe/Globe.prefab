@@ -60,12 +60,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   temperature: 3.6
+  cow: {fileID: 0}
   cows:
   - {fileID: 379624761529576613}
   - {fileID: 971203725962953711}
-  trees:
-  - {fileID: 758514245709186237}
-  - {fileID: 4018773541605455975}
+  cows2: []
 --- !u!1 &1875132905929363145
 GameObject:
   m_ObjectHideFlags: 0
@@ -5388,12 +5387,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca115019e71bcd149b6cf1b6d7d7ea32, type: 3}
---- !u!23 &758514245709186237 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 5579863143411564556, guid: ca115019e71bcd149b6cf1b6d7d7ea32,
-    type: 3}
-  m_PrefabInstance: {fileID: 5181795197583262897}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8838924262694123627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5483,9 +5476,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca115019e71bcd149b6cf1b6d7d7ea32, type: 3}
---- !u!23 &4018773541605455975 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 5579863143411564556, guid: ca115019e71bcd149b6cf1b6d7d7ea32,
-    type: 3}
-  m_PrefabInstance: {fileID: 8838924262694123627}
-  m_PrefabAsset: {fileID: 0}

@@ -7,7 +7,7 @@ public class StartGlobe : MonoBehaviour
     private bool globestatus = false;
     private Slider globeinstanz;
     public GameObject globe;
-    public float temperature = 3.6f;
+    public int index = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,24 +25,36 @@ public class StartGlobe : MonoBehaviour
     {
         if (globeinstanz == null) return;
         Debug.Log("cownumber: " + cownumber);
-
+        
         switch (cownumber)
         {
-
-            default:
-                Debug.Log("Keine Kuehe");
+            default:  
                 globeinstanz.UpdateCowIndex(false);
+                index = 0;
+                Debug.Log("Keine Kuehe, index ist: " + index);
 
                 break;
-            case 1:
-                globeinstanz.UpdateCowIndex(true);
-                Debug.Log("1 Kuh");
-                temperature += 1f;
+            case 1:     
+                if (cownumber >= index)
+                {
+                    globeinstanz.UpdateCowIndex(true);
+                    index = 1;
+                    Debug.Log("1 Kuh, index ist: " + index);
+                }
+                else
+                {
+                    globeinstanz.UpdateCowIndex(false);
+                    index = 1;
+                    Debug.Log("erster false fall");
+                }            
                 break;
-            case 2:
-                globeinstanz.UpdateCowIndex(true);
-                Debug.Log("2 Kuehe");
-                temperature += 2f;
+            case 2:       
+                if(cownumber >= index)
+                {
+                    globeinstanz.UpdateCowIndex(true);
+                    index = 2;
+                    Debug.Log("2 Kuehe, index ist: " + index);
+                }
                 break;
         }
     }
@@ -57,11 +69,9 @@ public class StartGlobe : MonoBehaviour
                 break;
             case 1:
                 Debug.Log("1 Pflanze");
-                temperature -= 1f;
                 break;
             case 2:
                 Debug.Log("2 Pflanzen");
-                temperature -= 2f;
                 break;
         }
 
