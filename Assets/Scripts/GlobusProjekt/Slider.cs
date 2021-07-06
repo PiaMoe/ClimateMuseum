@@ -5,8 +5,10 @@ using UnityEngine;
 public class Slider : MonoBehaviour
 {
     public GameObject cow;
-    public MeshRenderer[] cows = new MeshRenderer[2];
+    public MeshRenderer[] cows;
+    public MeshRenderer[] trees;
     private int cowindex = -1;
+    private int treeindex = -1;
 
 
     // Start is called before the first frame update
@@ -25,7 +27,7 @@ public class Slider : MonoBehaviour
     {
         if (increment)
         {
-            cowindex = cowindex + 1;
+            cowindex++;
             Debug.Log("Erste If Abfrage, cowindex ist: " + cowindex);
             for (int i = 0; i <= cowindex; i++)
             {
@@ -35,7 +37,7 @@ public class Slider : MonoBehaviour
         }
         else
         {
-            cowindex = cowindex - 1;
+            cowindex--;
             Debug.Log("Erster Else fall, cowindex ist: " + cowindex);
             for(int i = cows.Length - 1; i > cowindex; i--)
             {
@@ -46,13 +48,38 @@ public class Slider : MonoBehaviour
         
     }
 
+    public void UpdateTreeIndex(bool increment)
+    {
+        if (increment)
+        {
+            treeindex++;
+            Debug.Log("Erste If Abfrage, treeindex ist: " + treeindex);
+            for (int i = 0; i <= treeindex; i++)
+            {
+                trees[i].enabled = increment;
+            }
+            Debug.Log("Schleife hinzufügen, treeindex ist: " + treeindex + "increment ist: " + increment);
+        }
+        else
+        {
+            treeindex--;
+            Debug.Log("Erster Else fall, treeindex ist: " + treeindex);
+            for (int i = trees.Length - 1; i > treeindex; i--)
+            {
+                trees[i].enabled = increment;
+            }
+        }
+
+
+    }
+
 
 
     // if (cowindex< 0)
-     //   {
-       //     cowindex = -1;
-       //     Debug.Log("Zweite If Abfrage, cowindex ist: " + cowindex);
-       // }
+    //   {
+    //     cowindex = -1;
+    //     Debug.Log("Zweite If Abfrage, cowindex ist: " + cowindex);
+    // }
     //cows[cowindex].enabled = increment;
     //UpdateCowIndex
     //globeinstanz.transform.GetChild(1).GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;

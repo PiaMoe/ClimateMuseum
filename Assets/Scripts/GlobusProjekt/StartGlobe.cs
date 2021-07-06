@@ -7,7 +7,9 @@ public class StartGlobe : MonoBehaviour
     private bool globestatus = false;
     private Slider globeinstanz;
     public GameObject globe;
-    public int index = 0;
+    private int indexCow = 0;
+    private int indexTree = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,30 +32,44 @@ public class StartGlobe : MonoBehaviour
         {
             default:  
                 globeinstanz.UpdateCowIndex(false);
-                index = 0;
-                Debug.Log("Keine Kuehe, index ist: " + index);
+                indexCow = 0;
+                Debug.Log("Keine Kuehe, index ist: " + indexCow);
 
                 break;
             case 1:     
-                if (cownumber >= index)
+                if (cownumber >= indexCow)
                 {
                     globeinstanz.UpdateCowIndex(true);
-                    index = 1;
-                    Debug.Log("1 Kuh, index ist: " + index);
+                    indexCow = 1;
+                    Debug.Log("1 Kuh, index ist: " + indexCow);
                 }
                 else
                 {
                     globeinstanz.UpdateCowIndex(false);
-                    index = 1;
+                    indexCow = 1;
                     Debug.Log("erster false fall");
                 }            
                 break;
             case 2:       
-                if(cownumber >= index)
+                if(cownumber >= indexCow)
                 {
                     globeinstanz.UpdateCowIndex(true);
-                    index = 2;
-                    Debug.Log("2 Kuehe, index ist: " + index);
+                    indexCow = 2;
+                    Debug.Log("2 Kuehe, index ist: " + indexCow);
+                }
+                else
+                {
+                    globeinstanz.UpdateCowIndex(false);
+                    indexCow = 2;
+                    Debug.Log("erster false fall");
+                }
+                break;
+            case 3:
+                if (cownumber >= indexCow)
+                {
+                    globeinstanz.UpdateCowIndex(true);
+                    indexCow = 3;
+                    Debug.Log("3 Kühe, index ist: " + indexTree);
                 }
                 break;
         }
@@ -62,20 +78,55 @@ public class StartGlobe : MonoBehaviour
     public void Plant(float plantnumber)
     {
         if (globeinstanz == null) return;
+        Debug.Log("plantnumber: " + plantnumber);
+
         switch (plantnumber)
         {
             default:
-                Debug.Log("Keine Pflanzen");
+                globeinstanz.UpdateTreeIndex(false);
+                indexTree = 0;
+                Debug.Log("Keine Bäume, index ist: " + indexTree);
+
                 break;
             case 1:
-                Debug.Log("1 Pflanze");
+                if (plantnumber >= indexTree)
+                {
+                    globeinstanz.UpdateTreeIndex(true);
+                    indexTree = 1;
+                    Debug.Log("1 Baum, index ist: " + indexTree);
+                }
+                else
+                {
+                    globeinstanz.UpdateTreeIndex(false);
+                    indexTree = 1;
+                    Debug.Log("erster false fall");
+                }
                 break;
             case 2:
-                Debug.Log("2 Pflanzen");
+                if (plantnumber >= indexTree)
+                {
+                    globeinstanz.UpdateTreeIndex(true);
+                    indexTree = 2;
+                    Debug.Log("2 Bäume, index ist: " + indexTree);
+                }
+                else
+                {
+                    globeinstanz.UpdateTreeIndex(false);
+                    indexTree = 2;
+                    Debug.Log("zweiter false Fall");
+                }
+                break;
+            case 3: 
+                if (plantnumber >= indexTree)
+                {
+                    globeinstanz.UpdateTreeIndex(true);
+                    indexTree = 3;
+                    Debug.Log("3 Bäume, index ist: " + indexTree);
+                }
                 break;
         }
-
     }
+  
 
     void OnMouseDown()
     {
