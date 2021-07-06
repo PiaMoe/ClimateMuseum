@@ -24,13 +24,13 @@ public class StartGlobe : MonoBehaviour
     public void Cow(float cownumber)
     {
         if (globeinstanz == null) return;
-        Debug.Log("cownumber " + cownumber);
+        Debug.Log("cownumber: " + cownumber);
 
         switch (cownumber)
         {
 
             default:
-                Debug.Log("Keine K?he");
+                Debug.Log("Keine Kuehe");
                 globeinstanz.UpdateCowIndex(false);
 
                 break;
@@ -40,7 +40,8 @@ public class StartGlobe : MonoBehaviour
                 temperature += 1f;
                 break;
             case 2:
-                Debug.Log("2 K?he");
+                globeinstanz.UpdateCowIndex(true);
+                Debug.Log("2 Kuehe");
                 temperature += 2f;
                 break;
         }

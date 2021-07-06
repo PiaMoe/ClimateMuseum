@@ -41,7 +41,6 @@ public class Slider : MonoBehaviour
         }
         Debug.Log(cowindex);
         cows[cowindex].enabled = increment;
-        //cows2[cowindex].SetActive(increment);
     }
 
 
