@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartGlobe : MonoBehaviour
 {
     private bool globestatus = false;
     private Slider globeinstanz;
     public GameObject globe;
+    public GameObject instruction;
     private int indexCow = 0;
     private int indexTree = 0;
 
@@ -146,11 +148,13 @@ public class StartGlobe : MonoBehaviour
         if(globestatus == false)
         {
             CreatePrefab();
+            instruction.SetActive(false);
             globestatus = true;
         }
         else if(globestatus == true)
         {
             DestroyPrefab();
+            instruction.SetActive(true);
             globestatus = false;
         }
     }
@@ -159,7 +163,7 @@ public class StartGlobe : MonoBehaviour
     public void CreatePrefab()
         {
         globeinstanz = Instantiate(globe, new Vector3(11, 1, 3), Quaternion.identity).GetComponent<Slider>();
-        }
+    }
 
     public void DestroyPrefab()
         {
