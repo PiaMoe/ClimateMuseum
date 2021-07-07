@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Slider : MonoBehaviour
 {
-    public GameObject cow;
     public MeshRenderer[] cows;
     public MeshRenderer[] trees;
     private int cowindex = -1;
     private int treeindex = -1;
+    public ParticleSystem atmosphere;
+    public Text degree;
 
 
     // Start is called before the first frame update
@@ -69,10 +71,20 @@ public class Slider : MonoBehaviour
                 trees[i].enabled = increment;
             }
         }
-
-
     }
 
+    public void ChangeAtmosphere (Color color)
+    {
+        Debug.Log("Atmosphäre wird geändert");
+        ParticleSystem.MainModule settings = atmosphere.main;
+        settings.startColor = new ParticleSystem.MinMaxGradient(color);
+    }
+
+    public void ChangeDegree (string text)
+    {
+        Debug.Log("Gradzahl wird geändert");
+        degree.text = text;
+    }
 
 
     // if (cowindex< 0)

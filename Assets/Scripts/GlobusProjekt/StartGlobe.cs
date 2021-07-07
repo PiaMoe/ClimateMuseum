@@ -10,6 +10,13 @@ public class StartGlobe : MonoBehaviour
     private int indexCow = 0;
     private int indexTree = 0;
 
+    //Colors:
+    private Color black = new Color(30, 30, 30, 30);
+    private Color dark_grey = new Color(90, 90, 90, 90);
+    private Color light_grey = new Color(170, 170, 170, 170);
+    private Color white = new Color(255, 255, 255, 255);
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,44 +40,50 @@ public class StartGlobe : MonoBehaviour
             default:  
                 globeinstanz.UpdateCowIndex(false);
                 indexCow = 0;
+                globeinstanz.ChangeAtmosphere(white);
                 Debug.Log("Keine Kuehe, index ist: " + indexCow);
 
                 break;
-            case 1:     
+            case 1:
+                globeinstanz.ChangeAtmosphere(light_grey);
+                globeinstanz.ChangeDegree("36");
+                
+                Debug.Log("1 Kuh, index ist: " + indexCow);
+                if (cownumber >= indexCow)
+                {
+                    globeinstanz.UpdateCowIndex(true);      
+                }
+                else
+                {
+                    globeinstanz.UpdateCowIndex(false);
+                }
+                indexCow = 1;
+                break;
+            case 2:
+                globeinstanz.ChangeAtmosphere(dark_grey);
+                globeinstanz.ChangeDegree("37");
+               
+                Debug.Log("2 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
                 {
                     globeinstanz.UpdateCowIndex(true);
-                    indexCow = 1;
-                    Debug.Log("1 Kuh, index ist: " + indexCow);
                 }
                 else
                 {
-                    globeinstanz.UpdateCowIndex(false);
-                    indexCow = 1;
-                    Debug.Log("erster false fall");
-                }            
-                break;
-            case 2:       
-                if(cownumber >= indexCow)
-                {
-                    globeinstanz.UpdateCowIndex(true);
-                    indexCow = 2;
-                    Debug.Log("2 Kuehe, index ist: " + indexCow);
+                    globeinstanz.UpdateCowIndex(false); 
                 }
-                else
-                {
-                    globeinstanz.UpdateCowIndex(false);
-                    indexCow = 2;
-                    Debug.Log("erster false fall");
-                }
+                indexCow = 2;
                 break;
             case 3:
+                globeinstanz.ChangeAtmosphere(black);
+                globeinstanz.ChangeDegree("38");
+                
+                Debug.Log("3 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
                 {
                     globeinstanz.UpdateCowIndex(true);
-                    indexCow = 3;
-                    Debug.Log("3 Kühe, index ist: " + indexTree);
                 }
+                indexCow = 3;
                 break;
         }
     }
@@ -85,7 +98,7 @@ public class StartGlobe : MonoBehaviour
             default:
                 globeinstanz.UpdateTreeIndex(false);
                 indexTree = 0;
-                Debug.Log("Keine Bäume, index ist: " + indexTree);
+                Debug.Log("Keine B?ume, index ist: " + indexTree);
 
                 break;
             case 1:
@@ -107,7 +120,7 @@ public class StartGlobe : MonoBehaviour
                 {
                     globeinstanz.UpdateTreeIndex(true);
                     indexTree = 2;
-                    Debug.Log("2 Bäume, index ist: " + indexTree);
+                    Debug.Log("2 B?ume, index ist: " + indexTree);
                 }
                 else
                 {
@@ -121,7 +134,7 @@ public class StartGlobe : MonoBehaviour
                 {
                     globeinstanz.UpdateTreeIndex(true);
                     indexTree = 3;
-                    Debug.Log("3 Bäume, index ist: " + indexTree);
+                    Debug.Log("3 B?ume, index ist: " + indexTree);
                 }
                 break;
         }
