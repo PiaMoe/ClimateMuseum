@@ -75,9 +75,9 @@ public class Slider : MonoBehaviour
 
     public void ChangeAtmosphere (Color color)
     {
-        Debug.Log("Atmosphäre wird geändert");
         ParticleSystem.MainModule settings = atmosphere.main;
         settings.startColor = new ParticleSystem.MinMaxGradient(color);
+        Debug.Log("Atmosphäre wird geändert" + color);
     }
 
     public void ChangeDegree (string text)

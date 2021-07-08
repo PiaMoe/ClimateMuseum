@@ -11,10 +11,10 @@ public class StartGlobe : MonoBehaviour
     private int indexTree = 0;
 
     //Colors:
-    private Color black = new Color(30, 30, 30, 30);
-    private Color dark_grey = new Color(90, 90, 90, 90);
-    private Color light_grey = new Color(170, 170, 170, 170);
-    private Color white = new Color(255, 255, 255, 255);
+    private Color black = new Color32(60, 60, 60, 200);
+    private Color dark_grey = new Color32(120, 120, 120, 255);
+    private Color light_grey = new Color32(170, 170, 170, 255);
+    private Color white = new Color32(255, 255, 255, 100);
 
 
 
@@ -46,7 +46,7 @@ public class StartGlobe : MonoBehaviour
                 break;
             case 1:
                 globeinstanz.ChangeAtmosphere(light_grey);
-                globeinstanz.ChangeDegree("36");
+                globeinstanz.ChangeDegree("3,6°");
                 
                 Debug.Log("1 Kuh, index ist: " + indexCow);
                 if (cownumber >= indexCow)
@@ -61,7 +61,7 @@ public class StartGlobe : MonoBehaviour
                 break;
             case 2:
                 globeinstanz.ChangeAtmosphere(dark_grey);
-                globeinstanz.ChangeDegree("37");
+                globeinstanz.ChangeDegree("3,7°");
                
                 Debug.Log("2 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
@@ -76,7 +76,7 @@ public class StartGlobe : MonoBehaviour
                 break;
             case 3:
                 globeinstanz.ChangeAtmosphere(black);
-                globeinstanz.ChangeDegree("38");
+                globeinstanz.ChangeDegree("3,8°");
                 
                 Debug.Log("3 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
