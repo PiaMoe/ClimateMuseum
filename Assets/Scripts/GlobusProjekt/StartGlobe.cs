@@ -8,9 +8,13 @@ public class StartGlobe : MonoBehaviour
     private bool globestatus = false;
     private Slider globeinstanz;
     public GameObject globe;
-    public GameObject instruction;
     private int indexCow = 0;
     private int indexTree = 0;
+
+    //Instructions:
+    public GameObject instruction;
+    public GameObject DefInstr;
+    public GameObject MetInstr;
 
     //Colors:
     private Color black = new Color(30, 30, 30, 30);
@@ -148,14 +152,20 @@ public class StartGlobe : MonoBehaviour
         if(globestatus == false)
         {
             CreatePrefab();
-            instruction.SetActive(false);
             globestatus = true;
+
+            instruction.SetActive(false);
+            DefInstr.SetActive(true);
+            MetInstr.SetActive(true);
         }
         else if(globestatus == true)
         {
             DestroyPrefab();
-            instruction.SetActive(true);
             globestatus = false;
+
+            instruction.SetActive(true);
+            DefInstr.SetActive(false);
+            MetInstr.SetActive(false);
         }
     }
 
