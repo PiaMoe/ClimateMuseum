@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartGlobe : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class StartGlobe : MonoBehaviour
     public GameObject globe;
     private int indexCow = 0;
     private int indexTree = 0;
+
+    //Instructions:
+    public GameObject instruction;
+    public GameObject DefInstr;
+    public GameObject MetInstr;
 
     //Colors:
     private Color black = new Color32(60, 60, 60, 200);
@@ -147,11 +153,19 @@ public class StartGlobe : MonoBehaviour
         {
             CreatePrefab();
             globestatus = true;
+
+            instruction.SetActive(false);
+            DefInstr.SetActive(true);
+            MetInstr.SetActive(true);
         }
         else if(globestatus == true)
         {
             DestroyPrefab();
             globestatus = false;
+
+            instruction.SetActive(true);
+            DefInstr.SetActive(false);
+            MetInstr.SetActive(false);
         }
     }
 
@@ -159,7 +173,7 @@ public class StartGlobe : MonoBehaviour
     public void CreatePrefab()
         {
         globeinstanz = Instantiate(globe, new Vector3(11, 1, 3), Quaternion.identity).GetComponent<Slider>();
-        }
+    }
 
     public void DestroyPrefab()
         {
