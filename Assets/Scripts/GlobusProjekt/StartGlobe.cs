@@ -9,8 +9,8 @@ public class StartGlobe : MonoBehaviour
     private bool globeCreation = false;
     private Slider globeinstanz;
     public GameObject globe;
-    private int indexCow = 0;
-    private int indexTree = 0;
+    private int indexCow = 5;
+    private int indexTree = 2;
 
     //Instructions:
     public GameObject instruction;
@@ -48,7 +48,6 @@ public class StartGlobe : MonoBehaviour
         {
             default:  
                 globeinstanz.UpdateCowIndex(false);
-                globeinstanz.UpdateCowIndex(false);
                 indexCow = 0;
                 globeinstanz.ChangeAtmosphere(white);
                 Debug.Log("Keine Kuehe, index ist: " + indexCow);
@@ -56,9 +55,8 @@ public class StartGlobe : MonoBehaviour
                 break;
             case 1:
                 globeinstanz.ChangeAtmosphere(light_grey);
-                //globeinstanz.ChangeDegree("3,6°");
                 
-                Debug.Log("2 Kuhe, index ist: " + indexCow);
+                Debug.Log("1 Kuhe, index ist: " + indexCow);
                 if (MetInstructionsOn)
                 {
                     MetInstr.SetActive(false);
@@ -66,7 +64,6 @@ public class StartGlobe : MonoBehaviour
                 }
                 if (cownumber >= indexCow)
                 {
-                    globeinstanz.UpdateCowIndex(true);
                     globeinstanz.UpdateCowIndex(true);
                 }
                 else
@@ -77,8 +74,21 @@ public class StartGlobe : MonoBehaviour
                 break;
             case 2:
                 globeinstanz.ChangeAtmosphere(dark_grey);
-                //globeinstanz.ChangeDegree("3,7°");
                
+                Debug.Log("2 Kuhe, index ist: " + indexCow);
+                if (cownumber >= indexCow)
+                {
+                    globeinstanz.UpdateCowIndex(true);
+                }
+                else
+                {
+                    globeinstanz.UpdateCowIndex(false);  
+                }
+                indexCow = 2;
+                break;
+            case 3:
+                globeinstanz.ChangeAtmosphere(dark_grey);
+
                 Debug.Log("3 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
                 {
@@ -87,21 +97,60 @@ public class StartGlobe : MonoBehaviour
                 else
                 {
                     globeinstanz.UpdateCowIndex(false);
+                }
+                indexCow = 3;
+                break;
+            case 4:
+                globeinstanz.ChangeAtmosphere(dark_grey);
+
+                Debug.Log("4 Kuhe, index ist: " + indexCow);
+                if (cownumber >= indexCow)
+                {
+                    globeinstanz.UpdateCowIndex(true);
+                }
+                else
+                {
                     globeinstanz.UpdateCowIndex(false);
                 }
-                indexCow = 2;
+                indexCow = 4;
                 break;
-            case 3:
-                globeinstanz.ChangeAtmosphere(black);
-               // globeinstanz.ChangeDegree("3,8°");
-                
+            case 5:
+                globeinstanz.ChangeAtmosphere(dark_grey);
+
                 Debug.Log("5 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
                 {
                     globeinstanz.UpdateCowIndex(true);
+                }
+                else
+                {
+                    globeinstanz.UpdateCowIndex(false);
+                }
+                indexCow = 5;
+                break;
+            case 6:
+                globeinstanz.ChangeAtmosphere(dark_grey);
+
+                Debug.Log("6 Kuhe, index ist: " + indexCow);
+                if (cownumber >= indexCow)
+                {
                     globeinstanz.UpdateCowIndex(true);
                 }
-                indexCow = 3;
+                else
+                {
+                    globeinstanz.UpdateCowIndex(false);
+                }
+                indexCow = 6;
+                break;
+            case 7:
+                globeinstanz.ChangeAtmosphere(black);
+                
+                Debug.Log("7 Kuhe, index ist: " + indexCow);
+                if (cownumber >= indexCow)
+                {
+                    globeinstanz.UpdateCowIndex(true);
+                }
+                indexCow = 7;
                 break;
         }
     }
@@ -114,7 +163,6 @@ public class StartGlobe : MonoBehaviour
         switch (plantnumber)
         {
             default:
-                globeinstanz.UpdateTreeIndex(false);
                 globeinstanz.UpdateTreeIndex(false);
                 indexTree = 0;
                 Debug.Log("Keine B?ume, index ist: " + indexTree);
@@ -129,39 +177,86 @@ public class StartGlobe : MonoBehaviour
                 if (plantnumber >= indexTree)
                 {
                     globeinstanz.UpdateTreeIndex(true);
-                    globeinstanz.UpdateTreeIndex(true);
-                    indexTree = 1;
-                    Debug.Log("2 Baum, index ist: " + indexTree);
+                    Debug.Log("1 Baum, index ist: " + indexTree);
                 }
                 else
                 {
                     globeinstanz.UpdateTreeIndex(false);
-                    indexTree = 1;
                     Debug.Log("erster false fall");
                 }
+                indexTree = 1;
                 break;
             case 2:
                 if (plantnumber >= indexTree)
                 {
                     globeinstanz.UpdateTreeIndex(true);
-                    indexTree = 2;
+                    Debug.Log("2 B?ume, index ist: " + indexTree);
+                }
+                else
+                {
+                    globeinstanz.UpdateTreeIndex(false);
+                    Debug.Log("zweiter false Fall");
+                }
+                indexTree = 2;
+                break;
+            case 3:
+                if (plantnumber >= indexTree)
+                {
+                    globeinstanz.UpdateTreeIndex(true);   
                     Debug.Log("3 B?ume, index ist: " + indexTree);
                 }
                 else
                 {
                     globeinstanz.UpdateTreeIndex(false);
-                    globeinstanz.UpdateTreeIndex(false);
-                    indexTree = 2;
                     Debug.Log("zweiter false Fall");
                 }
+                indexTree = 3;
                 break;
-            case 3: 
+            case 4:
                 if (plantnumber >= indexTree)
                 {
                     globeinstanz.UpdateTreeIndex(true);
+                    Debug.Log("4 B?ume, index ist: " + indexTree);
+                }
+                else
+                {
+                    globeinstanz.UpdateTreeIndex(false);
+                    Debug.Log("zweiter false Fall");
+                }
+                indexTree = 4;
+                break;
+            case 5:
+                if (plantnumber >= indexTree)
+                {
                     globeinstanz.UpdateTreeIndex(true);
-                    indexTree = 3;
                     Debug.Log("5 B?ume, index ist: " + indexTree);
+                }
+                else
+                {
+                    globeinstanz.UpdateTreeIndex(false);
+                    Debug.Log("zweiter false Fall");
+                }
+                indexTree = 5;
+                break;
+            case 6:
+                if (plantnumber >= indexTree)
+                {
+                    globeinstanz.UpdateTreeIndex(true);
+                    Debug.Log("6 B?ume, index ist: " + indexTree);
+                }
+                else
+                {
+                    globeinstanz.UpdateTreeIndex(false);
+                    Debug.Log("zweiter false Fall");
+                }
+                indexTree = 6;
+                break;
+            case 7: 
+                if (plantnumber >= indexTree)
+                {
+                    globeinstanz.UpdateTreeIndex(true);
+                    indexTree = 7;
+                    Debug.Log("7 B?ume, index ist: " + indexTree);
                 }
                 break;
         }

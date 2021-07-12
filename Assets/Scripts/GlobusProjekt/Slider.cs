@@ -7,8 +7,8 @@ public class Slider : MonoBehaviour
 {
     public MeshRenderer[] cows;
     public MeshRenderer[] trees;
-    private int cowindex = -1;
-    private int treeindex = -1;
+    private int cowindex = 4;
+    private int treeindex = 1;
     public ParticleSystem atmosphere;
     public Text degree;
     private float currentTemp = 3.6f;
