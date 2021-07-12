@@ -11,6 +11,7 @@ public class Slider : MonoBehaviour
     private int treeindex = -1;
     public ParticleSystem atmosphere;
     public Text degree;
+    private float currentTemp = 3.6f;
 
 
     // Start is called before the first frame update
@@ -30,6 +31,7 @@ public class Slider : MonoBehaviour
         if (increment)
         {
             cowindex++;
+            ChangeDegree(0.5f);
             Debug.Log("Erste If Abfrage, cowindex ist: " + cowindex);
             for (int i = 0; i <= cowindex; i++)
             {
@@ -39,6 +41,7 @@ public class Slider : MonoBehaviour
         }
         else
         {
+            ChangeDegree(-0.5f);
             cowindex--;
             Debug.Log("Erster Else fall, cowindex ist: " + cowindex);
             for(int i = cows.Length - 1; i > cowindex; i--)
@@ -54,6 +57,7 @@ public class Slider : MonoBehaviour
     {
         if (increment)
         {
+            ChangeDegree(-0.1f);
             treeindex++;
             Debug.Log("Erste If Abfrage, treeindex ist: " + treeindex);
             for (int i = 0; i <= treeindex; i++)
@@ -64,6 +68,7 @@ public class Slider : MonoBehaviour
         }
         else
         {
+            ChangeDegree(0.1f);
             treeindex--;
             Debug.Log("Erster Else fall, treeindex ist: " + treeindex);
             for (int i = trees.Length - 1; i > treeindex; i--)
@@ -80,10 +85,11 @@ public class Slider : MonoBehaviour
         Debug.Log("Atmosphäre wird geändert" + color);
     }
 
-    public void ChangeDegree (string text)
+    public void ChangeDegree (float change)
     {
         Debug.Log("Gradzahl wird geändert");
-        degree.text = text;
+        currentTemp += change;
+        degree.text = "+" + currentTemp.ToString() + " °C";
     }
 
 
