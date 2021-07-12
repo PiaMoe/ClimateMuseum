@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StartGlobe : MonoBehaviour
 {
     private bool globestatus = false;
+    private bool globeCreation = false;
     private Slider globeinstanz;
     public GameObject globe;
     private int indexCow = 0;
@@ -55,7 +56,7 @@ public class StartGlobe : MonoBehaviour
                 break;
             case 1:
                 globeinstanz.ChangeAtmosphere(light_grey);
-                globeinstanz.ChangeDegree("3,6°");
+                //globeinstanz.ChangeDegree("3,6°");
                 
                 Debug.Log("2 Kuhe, index ist: " + indexCow);
                 if (MetInstructionsOn)
@@ -76,7 +77,7 @@ public class StartGlobe : MonoBehaviour
                 break;
             case 2:
                 globeinstanz.ChangeAtmosphere(dark_grey);
-                globeinstanz.ChangeDegree("3,7°");
+                //globeinstanz.ChangeDegree("3,7°");
                
                 Debug.Log("3 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
@@ -92,7 +93,7 @@ public class StartGlobe : MonoBehaviour
                 break;
             case 3:
                 globeinstanz.ChangeAtmosphere(black);
-                globeinstanz.ChangeDegree("3,8°");
+               // globeinstanz.ChangeDegree("3,8°");
                 
                 Debug.Log("5 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
@@ -195,13 +196,21 @@ public class StartGlobe : MonoBehaviour
 
     public void CreatePrefab()
         {
-        globeinstanz = Instantiate(globe, new Vector3(11, 1, 3), Quaternion.identity).GetComponent<Slider>();
+        if (globeCreation == false)
+        {
+            globeinstanz = Instantiate(globe, new Vector3(11, 1, 3), Quaternion.identity).GetComponent<Slider>();
+            globeCreation = true;
+        } 
+        else
+        {
+            globeinstanz.gameObject.SetActive(true);
+        }
     }
 
     public void DestroyPrefab()
-        {
-        Destroy(globeinstanz.gameObject);
-        }
+    {
+       globeinstanz.gameObject.SetActive(false);
+    }
 
 
 
