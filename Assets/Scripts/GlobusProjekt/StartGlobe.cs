@@ -19,13 +19,6 @@ public class StartGlobe : MonoBehaviour
     private bool DefInstructionsOn = false;
     private bool MetInstructionsOn = false;
 
-    //Colors:
-    private Color black = new Color32(60, 60, 60, 200);
-    private Color dark_grey = new Color32(120, 120, 120, 255);
-    private Color light_grey = new Color32(170, 170, 170, 255);
-    private Color white = new Color32(255, 255, 255, 100);
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -49,12 +42,10 @@ public class StartGlobe : MonoBehaviour
             default:  
                 globeinstanz.UpdateCowIndex(false);
                 indexCow = 0;
-                globeinstanz.ChangeAtmosphere(white);
                 Debug.Log("Keine Kuehe, index ist: " + indexCow);
 
                 break;
             case 1:
-                globeinstanz.ChangeAtmosphere(light_grey);
                 
                 Debug.Log("1 Kuhe, index ist: " + indexCow);
                 if (MetInstructionsOn)
@@ -73,8 +64,6 @@ public class StartGlobe : MonoBehaviour
                 indexCow = 1;
                 break;
             case 2:
-                globeinstanz.ChangeAtmosphere(dark_grey);
-               
                 Debug.Log("2 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
                 {
@@ -87,8 +76,6 @@ public class StartGlobe : MonoBehaviour
                 indexCow = 2;
                 break;
             case 3:
-                globeinstanz.ChangeAtmosphere(dark_grey);
-
                 Debug.Log("3 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
                 {
@@ -101,8 +88,6 @@ public class StartGlobe : MonoBehaviour
                 indexCow = 3;
                 break;
             case 4:
-                globeinstanz.ChangeAtmosphere(dark_grey);
-
                 Debug.Log("4 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
                 {
@@ -115,8 +100,6 @@ public class StartGlobe : MonoBehaviour
                 indexCow = 4;
                 break;
             case 5:
-                globeinstanz.ChangeAtmosphere(dark_grey);
-
                 Debug.Log("5 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
                 {
@@ -129,8 +112,6 @@ public class StartGlobe : MonoBehaviour
                 indexCow = 5;
                 break;
             case 6:
-                globeinstanz.ChangeAtmosphere(dark_grey);
-
                 Debug.Log("6 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
                 {
@@ -143,8 +124,6 @@ public class StartGlobe : MonoBehaviour
                 indexCow = 6;
                 break;
             case 7:
-                globeinstanz.ChangeAtmosphere(black);
-                
                 Debug.Log("7 Kuhe, index ist: " + indexCow);
                 if (cownumber >= indexCow)
                 {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class Slider : MonoBehaviour
 {
@@ -11,7 +12,11 @@ public class Slider : MonoBehaviour
     private int treeindex = 1;
     public ParticleSystem atmosphere;
     public Text degree;
+    private int currentColor = 115;
+    private int ColorInfluence = 14;
     private float currentTemp = 3.6f;
+    private float TempInfluenceCow = 0.08f;
+    private float TempInfluenceTree = 0.02f;
 
 
     // Start is called before the first frame update
@@ -31,7 +36,8 @@ public class Slider : MonoBehaviour
         if (increment)
         {
             cowindex++;
-            ChangeDegree(0.5f);
+            ChangeDegree(TempInfluenceCow);
+            ChangeAtmosphere(-ColorInfluence);
             Debug.Log("Erste If Abfrage, cowindex ist: " + cowindex);
             for (int i = 0; i <= cowindex; i++)
             {
@@ -41,7 +47,8 @@ public class Slider : MonoBehaviour
         }
         else
         {
-            ChangeDegree(-0.5f);
+            ChangeDegree(-TempInfluenceCow);
+            ChangeAtmosphere(ColorInfluence);
             cowindex--;
             Debug.Log("Erster Else fall, cowindex ist: " + cowindex);
             for(int i = cows.Length - 1; i > cowindex; i--)
@@ -57,7 +64,8 @@ public class Slider : MonoBehaviour
     {
         if (increment)
         {
-            ChangeDegree(-0.1f);
+            ChangeDegree(-TempInfluenceTree);
+            ChangeAtmosphere(ColorInfluence);
             treeindex++;
             Debug.Log("Erste If Abfrage, treeindex ist: " + treeindex);
             for (int i = 0; i <= treeindex; i++)
@@ -68,7 +76,8 @@ public class Slider : MonoBehaviour
         }
         else
         {
-            ChangeDegree(0.1f);
+            ChangeDegree(TempInfluenceTree);
+            ChangeAtmosphere(-ColorInfluence);
             treeindex--;
             Debug.Log("Erster Else fall, treeindex ist: " + treeindex);
             for (int i = trees.Length - 1; i > treeindex; i--)
@@ -78,8 +87,12 @@ public class Slider : MonoBehaviour
         }
     }
 
-    public void ChangeAtmosphere (Color color)
+    public void ChangeAtmosphere (int colorValue)
     {
+        currentColor += colorValue;
+        byte RGB = (byte) currentColor;
+        Color color = new Color32(RGB, RGB, RGB, 255);
+
         ParticleSystem.MainModule settings = atmosphere.main;
         settings.startColor = new ParticleSystem.MinMaxGradient(color);
         Debug.Log("Atmosphäre wird geändert" + color);
@@ -89,7 +102,9 @@ public class Slider : MonoBehaviour
     {
         Debug.Log("Gradzahl wird geändert");
         currentTemp += change;
-        degree.text = "+" + currentTemp.ToString() + " °C";
+        double roundTemp = Math.Round(currentTemp, 1);
+        Debug.Log("gerundete Temperatur: " + roundTemp);
+        degree.text = "+" + roundTemp.ToString() + " °C";
     }
 
 
