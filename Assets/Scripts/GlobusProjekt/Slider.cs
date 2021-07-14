@@ -10,10 +10,14 @@ public class Slider : MonoBehaviour
     public MeshRenderer[] trees;
     private int cowindex = 4;
     private int treeindex = 1;
+
+    // Atmosphere
     public ParticleSystem atmosphere;
-    public Text degree;
     private int currentColor = 115;
     private int ColorInfluence = 14;
+
+    // Temperature
+    public Text degree;
     private float currentTemp = 3.6f;
     private float TempInfluenceCow = 0.08f;
     private float TempInfluenceTree = 0.02f;

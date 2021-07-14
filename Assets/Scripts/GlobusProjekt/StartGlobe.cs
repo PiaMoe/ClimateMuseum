@@ -9,8 +9,8 @@ public class StartGlobe : MonoBehaviour
     private bool globeCreation = false;
     private Slider globeinstanz;
     public GameObject globe;
-    private int indexCow = 5;
-    private int indexTree = 2;
+    private float indexCow = 5;
+    private float indexTree = 2;
 
     //Instructions:
     public GameObject instruction;
@@ -36,109 +36,148 @@ public class StartGlobe : MonoBehaviour
     {
         if (globeinstanz == null) return;
         Debug.Log("cownumber: " + cownumber);
-        
-        switch (cownumber)
+
+        // neuer Code
+        if (MetInstructionsOn)
         {
-            default:  
-                globeinstanz.UpdateCowIndex(false);
-                indexCow = 0;
-                Debug.Log("Keine Kuehe, index ist: " + indexCow);
-
-                break;
-            case 1:
-                
-                Debug.Log("1 Kuhe, index ist: " + indexCow);
-                if (MetInstructionsOn)
-                {
-                    MetInstr.SetActive(false);
-                    MetInstructionsOn = false;
-                }
-                if (cownumber >= indexCow)
-                {
-                    globeinstanz.UpdateCowIndex(true);
-                }
-                else
-                {
-                    globeinstanz.UpdateCowIndex(false);
-                }
-                indexCow = 1;
-                break;
-            case 2:
-                Debug.Log("2 Kuhe, index ist: " + indexCow);
-                if (cownumber >= indexCow)
-                {
-                    globeinstanz.UpdateCowIndex(true);
-                }
-                else
-                {
-                    globeinstanz.UpdateCowIndex(false);  
-                }
-                indexCow = 2;
-                break;
-            case 3:
-                Debug.Log("3 Kuhe, index ist: " + indexCow);
-                if (cownumber >= indexCow)
-                {
-                    globeinstanz.UpdateCowIndex(true);
-                }
-                else
-                {
-                    globeinstanz.UpdateCowIndex(false);
-                }
-                indexCow = 3;
-                break;
-            case 4:
-                Debug.Log("4 Kuhe, index ist: " + indexCow);
-                if (cownumber >= indexCow)
-                {
-                    globeinstanz.UpdateCowIndex(true);
-                }
-                else
-                {
-                    globeinstanz.UpdateCowIndex(false);
-                }
-                indexCow = 4;
-                break;
-            case 5:
-                Debug.Log("5 Kuhe, index ist: " + indexCow);
-                if (cownumber >= indexCow)
-                {
-                    globeinstanz.UpdateCowIndex(true);
-                }
-                else
-                {
-                    globeinstanz.UpdateCowIndex(false);
-                }
-                indexCow = 5;
-                break;
-            case 6:
-                Debug.Log("6 Kuhe, index ist: " + indexCow);
-                if (cownumber >= indexCow)
-                {
-                    globeinstanz.UpdateCowIndex(true);
-                }
-                else
-                {
-                    globeinstanz.UpdateCowIndex(false);
-                }
-                indexCow = 6;
-                break;
-            case 7:
-                Debug.Log("7 Kuhe, index ist: " + indexCow);
-                if (cownumber >= indexCow)
-                {
-                    globeinstanz.UpdateCowIndex(true);
-                }
-                indexCow = 7;
-                break;
+            MetInstr.SetActive(false);
+            MetInstructionsOn = false;
         }
-    }
 
+        if (cownumber >= indexCow)
+        {
+            globeinstanz.UpdateCowIndex(true);
+        }
+        else
+        {
+            globeinstanz.UpdateCowIndex(false);
+        }
+        indexCow = cownumber;
+    }
+    // neuer Code Ende
+
+    /*   switch (cownumber)
+       {
+           default:  
+               globeinstanz.UpdateCowIndex(false);
+               indexCow = 0;
+               Debug.Log("Keine Kuehe, index ist: " + indexCow);
+
+               break;
+           case 1:
+
+               Debug.Log("1 Kuhe, index ist: " + indexCow);
+               if (MetInstructionsOn)
+               {
+                   MetInstr.SetActive(false);
+                   MetInstructionsOn = false;
+               }
+               if (cownumber >= indexCow)
+               {
+                   globeinstanz.UpdateCowIndex(true);
+               }
+               else
+               {
+                   globeinstanz.UpdateCowIndex(false);
+               }
+               indexCow = 1;
+               break;
+           case 2:
+               Debug.Log("2 Kuhe, index ist: " + indexCow);
+               if (cownumber >= indexCow)
+               {
+                   globeinstanz.UpdateCowIndex(true);
+               }
+               else
+               {
+                   globeinstanz.UpdateCowIndex(false);  
+               }
+               indexCow = 2;
+               break;
+           case 3:
+               Debug.Log("3 Kuhe, index ist: " + indexCow);
+               if (cownumber >= indexCow)
+               {
+                   globeinstanz.UpdateCowIndex(true);
+               }
+               else
+               {
+                   globeinstanz.UpdateCowIndex(false);
+               }
+               indexCow = 3;
+               break;
+           case 4:
+               Debug.Log("4 Kuhe, index ist: " + indexCow);
+               if (cownumber >= indexCow)
+               {
+                   globeinstanz.UpdateCowIndex(true);
+               }
+               else
+               {
+                   globeinstanz.UpdateCowIndex(false);
+               }
+               indexCow = 4;
+               break;
+           case 5:
+               Debug.Log("5 Kuhe, index ist: " + indexCow);
+               if (cownumber >= indexCow)
+               {
+                   globeinstanz.UpdateCowIndex(true);
+               }
+               else
+               {
+                   globeinstanz.UpdateCowIndex(false);
+               }
+               indexCow = 5;
+               break;
+           case 6:
+               Debug.Log("6 Kuhe, index ist: " + indexCow);
+               if (cownumber >= indexCow)
+               {
+                   globeinstanz.UpdateCowIndex(true);
+               }
+               else
+               {
+                   globeinstanz.UpdateCowIndex(false);
+               }
+               indexCow = 6;
+               break;
+           case 7:
+               Debug.Log("7 Kuhe, index ist: " + indexCow);
+               if (cownumber >= indexCow)
+               {
+                   globeinstanz.UpdateCowIndex(true);
+               }
+               indexCow = 7;
+               break;
+       }
+   }
+*/
     public void Plant(float plantnumber)
     {
         if (globeinstanz == null) return;
         Debug.Log("plantnumber: " + plantnumber);
 
+        // neuer Code
+        if (DefInstructionsOn)
+        {
+            DefInstr.SetActive(false);
+            DefInstructionsOn = false;
+        }
+
+        if (plantnumber >= indexTree)
+        {
+            globeinstanz.UpdateTreeIndex(true);
+        }
+        else
+        {
+            globeinstanz.UpdateTreeIndex(false);
+        }
+        indexTree = plantnumber;
+    }
+    // neuer Code Ende
+
+        /*
         switch (plantnumber)
         {
             default:
@@ -240,9 +279,10 @@ public class StartGlobe : MonoBehaviour
                 break;
         }
     }
-  
+        */
 
-    void OnMouseDown()
+
+        void OnMouseDown()
     {
         if(globestatus == false)
         {
@@ -262,8 +302,6 @@ public class StartGlobe : MonoBehaviour
             globestatus = false;
 
             instruction.SetActive(true);
-           // DefInstr.SetActive(false);
-            // MetInstr.SetActive(false);
         }
     }
 
