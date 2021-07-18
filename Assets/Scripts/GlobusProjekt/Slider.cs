@@ -24,10 +24,10 @@ public class Slider : MonoBehaviour
 
     // Water Color
     public Material WaterColor;
-    private int currentGValueWater = 70;
-    private int currentBValueWater = 150;
-    private int G_WaterInfluence = 4;
-    private int B_WaterInfluence = 7;
+    private int currentGValueWater = 75;
+    private int currentBValueWater = 160;
+    private int G_WaterInfluence = 6;
+    private int B_WaterInfluence = 9;
 
 
     // Temperature
@@ -154,7 +154,9 @@ public class Slider : MonoBehaviour
 
         byte G = (byte)currentGValueWater;
         byte B = (byte)currentBValueWater;
-        
+        Debug.Log("Water Color G-Value: " + G);
+        Debug.Log("Water Color B-Value: " + B);
+
         Color color = new Color32(0, G, B, 255);
         WaterColor.color = color;
     }
