@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class Slider : MonoBehaviour
 {
@@ -13,11 +14,24 @@ public class Slider : MonoBehaviour
 
     // Atmosphere
     public ParticleSystem atmosphere;
-    private int currentColor = 115;
-    private int ColorInfluence = 14;
+    private int currentColorAtmo = 115;
+    private int colorAtmoInfluence = 14;
+
+    // Grass Color
+    public Material EarthColor;
+    private int currentColorGrass = 96;
+    private int colorGrassInfluence = 8;
+
+    // Water Color
+    public Material WaterColor;
+    private int currentGValueWater = 75;
+    private int currentBValueWater = 160;
+    private int G_WaterInfluence = 6;
+    private int B_WaterInfluence = 9;
+
 
     // Temperature
-    public Text degree;
+    public TMP_Text degree;
     private float currentTemp = 3.6f;
     private float TempInfluenceCow = 0.08f;
     private float TempInfluenceTree = 0.02f;
@@ -39,9 +53,12 @@ public class Slider : MonoBehaviour
     {
         if (increment)
         {
-            cowindex++;
             ChangeDegree(TempInfluenceCow);
-            ChangeAtmosphere(-ColorInfluence);
+            ChangeAtmosphere(-colorAtmoInfluence);
+            ChangeGrassColor(colorGrassInfluence);
+            ChangeWaterColor(-G_WaterInfluence, -B_WaterInfluence);
+
+            cowindex++;
             Debug.Log("Erste If Abfrage, cowindex ist: " + cowindex);
             for (int i = 0; i <= cowindex; i++)
             {
@@ -52,7 +69,10 @@ public class Slider : MonoBehaviour
         else
         {
             ChangeDegree(-TempInfluenceCow);
-            ChangeAtmosphere(ColorInfluence);
+            ChangeAtmosphere(colorAtmoInfluence);
+            ChangeGrassColor(-colorGrassInfluence);
+            ChangeWaterColor(G_WaterInfluence, B_WaterInfluence);
+
             cowindex--;
             Debug.Log("Erster Else fall, cowindex ist: " + cowindex);
             for(int i = cows.Length - 1; i > cowindex; i--)
@@ -69,7 +89,10 @@ public class Slider : MonoBehaviour
         if (increment)
         {
             ChangeDegree(-TempInfluenceTree);
-            ChangeAtmosphere(ColorInfluence);
+            ChangeAtmosphere(colorAtmoInfluence);
+            ChangeGrassColor(-colorGrassInfluence);
+            ChangeWaterColor(G_WaterInfluence, B_WaterInfluence);
+
             treeindex++;
             Debug.Log("Erste If Abfrage, treeindex ist: " + treeindex);
             for (int i = 0; i <= treeindex; i++)
@@ -81,7 +104,10 @@ public class Slider : MonoBehaviour
         else
         {
             ChangeDegree(TempInfluenceTree);
-            ChangeAtmosphere(-ColorInfluence);
+            ChangeAtmosphere(-colorAtmoInfluence);
+            ChangeGrassColor(colorGrassInfluence);
+            ChangeWaterColor(-G_WaterInfluence, -B_WaterInfluence);
+
             treeindex--;
             Debug.Log("Erster Else fall, treeindex ist: " + treeindex);
             for (int i = trees.Length - 1; i > treeindex; i--)
@@ -93,8 +119,8 @@ public class Slider : MonoBehaviour
 
     public void ChangeAtmosphere (int colorValue)
     {
-        currentColor += colorValue;
-        byte RGB = (byte) currentColor;
+        currentColorAtmo += colorValue;
+        byte RGB = (byte) currentColorAtmo;
         Color color = new Color32(RGB, RGB, RGB, 255);
 
         ParticleSystem.MainModule settings = atmosphere.main;
@@ -111,6 +137,29 @@ public class Slider : MonoBehaviour
         degree.text = "+" + roundTemp.ToString() + " °C";
     }
 
+    public void ChangeGrassColor (int colorValue)
+    {
+        currentColorGrass += colorValue;
+        Debug.Log("Grass Color R-Value int: " + currentColorGrass);
+        byte R = (byte)currentColorGrass;
+        Color color = new Color32(R, 147, 65, 255);
+        EarthColor.color = color;
+        Debug.Log("Grass Color R-Value byte: " + R);
+    }
+
+    public void ChangeWaterColor (int colorValueG, int colorValueB)
+    {
+        currentGValueWater += colorValueG;
+        currentBValueWater += colorValueB;
+
+        byte G = (byte)currentGValueWater;
+        byte B = (byte)currentBValueWater;
+        Debug.Log("Water Color G-Value: " + G);
+        Debug.Log("Water Color B-Value: " + B);
+
+        Color color = new Color32(0, G, B, 255);
+        WaterColor.color = color;
+    }
 
     // if (cowindex< 0)
     //   {
