@@ -32,6 +32,50 @@ public class StartGlobe : MonoBehaviour
 
     }
 
+
+    void OnMouseDown()
+    {
+        if (globestatus == false)
+        {
+            CreatePrefab();
+            globestatus = true;
+
+            instruction.SetActive(false);
+            DefInstr.SetActive(true);
+            MetInstr.SetActive(true);
+            DefInstructionsOn = true;
+            MetInstructionsOn = true;
+
+        }
+        else if (globestatus == true)
+        {
+            DestroyPrefab();
+            globestatus = false;
+
+            instruction.SetActive(true);
+        }
+    }
+
+
+    public void CreatePrefab()
+    {
+        if (globeCreation == false)
+        {
+            globeinstanz = Instantiate(globe, new Vector3(11, 1, 3), Quaternion.identity).GetComponent<Slider>();
+            globeCreation = true;
+        }
+        else
+        {
+            globeinstanz.gameObject.SetActive(true);
+        }
+    }
+
+    public void DestroyPrefab()
+    {
+        globeinstanz.gameObject.SetActive(false);
+    }
+
+
     public void Cow(float cownumber)
     {
         if (globeinstanz == null) return;
@@ -76,61 +120,11 @@ public class StartGlobe : MonoBehaviour
         indexTree = plantnumber;
     }
 
-
-    void OnMouseDown()
-    {
-        if (globestatus == false)
-        {
-            CreatePrefab();
-            globestatus = true;
-
-            instruction.SetActive(false);
-            DefInstr.SetActive(true);
-            MetInstr.SetActive(true);
-            DefInstructionsOn = true;
-            MetInstructionsOn = true;
-
-        }
-        else if (globestatus == true)
-        {
-            DestroyPrefab();
-            globestatus = false;
-
-            instruction.SetActive(true);
-        }
-    }
-
-
-    public void CreatePrefab()
-    {
-        if (globeCreation == false)
-        {
-            globeinstanz = Instantiate(globe, new Vector3(11, 1, 3), Quaternion.identity).GetComponent<Slider>();
-            globeCreation = true;
-        }
-        else
-        {
-            globeinstanz.gameObject.SetActive(true);
-        }
-    }
-
-    public void DestroyPrefab()
-    {
-        globeinstanz.gameObject.SetActive(false);
-    }
-
 }
 
 
-    //Cow Methode:
-    //GameObject Kuh = this.gameObject.transform.GetChild(1).GetChild(0).gameObject;
-    //Kuh.SetActive(true);
-    // this.gameObject.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
-    //StartGlobe.globeinstanz
-    //Instantiate(cow, new Vector3(0, 0.8f, -0.5f), Quaternion.Euler(-34.5f, 0, 0), this.gameObject.transform);
 
-
-    // neuer Code Ende
+    // Alter Code:
 
     /*   switch (cownumber)
        {

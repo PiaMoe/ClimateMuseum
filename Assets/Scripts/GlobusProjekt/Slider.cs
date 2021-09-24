@@ -53,11 +53,6 @@ public class Slider : MonoBehaviour
     {
         if (increment)
         {
-            ChangeDegree(TempInfluenceCow);
-            ChangeAtmosphere(-colorAtmoInfluence);
-            ChangeGrassColor(colorGrassInfluence);
-            ChangeWaterColor(-G_WaterInfluence, -B_WaterInfluence);
-
             cowindex++;
             Debug.Log("Erste If Abfrage, cowindex ist: " + cowindex);
             for (int i = 0; i <= cowindex; i++)
@@ -65,20 +60,25 @@ public class Slider : MonoBehaviour
                 cows[i].enabled = increment;
             }
             Debug.Log("Schleife hinzufügen, cowindex ist: " + cowindex + "increment ist: " + increment);
+
+            ChangeDegree(TempInfluenceCow);
+            ChangeAtmosphere(-colorAtmoInfluence);
+            ChangeGrassColor(colorGrassInfluence);
+            ChangeWaterColor(-G_WaterInfluence, -B_WaterInfluence);
         }
         else
         {
-            ChangeDegree(-TempInfluenceCow);
-            ChangeAtmosphere(colorAtmoInfluence);
-            ChangeGrassColor(-colorGrassInfluence);
-            ChangeWaterColor(G_WaterInfluence, B_WaterInfluence);
-
             cowindex--;
             Debug.Log("Erster Else fall, cowindex ist: " + cowindex);
             for(int i = cows.Length - 1; i > cowindex; i--)
             {
                 cows[i].enabled = increment;
             }
+
+            ChangeDegree(-TempInfluenceCow);
+            ChangeAtmosphere(colorAtmoInfluence);
+            ChangeGrassColor(-colorGrassInfluence);
+            ChangeWaterColor(G_WaterInfluence, B_WaterInfluence);
         }
 
         
@@ -88,11 +88,6 @@ public class Slider : MonoBehaviour
     {
         if (increment)
         {
-            ChangeDegree(-TempInfluenceTree);
-            ChangeAtmosphere(colorAtmoInfluence);
-            ChangeGrassColor(-colorGrassInfluence);
-            ChangeWaterColor(G_WaterInfluence, B_WaterInfluence);
-
             treeindex++;
             Debug.Log("Erste If Abfrage, treeindex ist: " + treeindex);
             for (int i = 0; i <= treeindex; i++)
@@ -100,33 +95,28 @@ public class Slider : MonoBehaviour
                 trees[i].enabled = increment;
             }
             Debug.Log("Schleife hinzufügen, treeindex ist: " + treeindex + "increment ist: " + increment);
+
+            ChangeDegree(-TempInfluenceTree);
+            ChangeAtmosphere(colorAtmoInfluence);
+            ChangeGrassColor(-colorGrassInfluence);
+            ChangeWaterColor(G_WaterInfluence, B_WaterInfluence);
         }
         else
         {
-            ChangeDegree(TempInfluenceTree);
-            ChangeAtmosphere(-colorAtmoInfluence);
-            ChangeGrassColor(colorGrassInfluence);
-            ChangeWaterColor(-G_WaterInfluence, -B_WaterInfluence);
-
             treeindex--;
             Debug.Log("Erster Else fall, treeindex ist: " + treeindex);
             for (int i = trees.Length - 1; i > treeindex; i--)
             {
                 trees[i].enabled = increment;
             }
+
+            ChangeDegree(TempInfluenceTree);
+            ChangeAtmosphere(-colorAtmoInfluence);
+            ChangeGrassColor(colorGrassInfluence);
+            ChangeWaterColor(-G_WaterInfluence, -B_WaterInfluence);
         }
     }
 
-    public void ChangeAtmosphere (int colorValue)
-    {
-        currentColorAtmo += colorValue;
-        byte RGB = (byte) currentColorAtmo;
-        Color color = new Color32(RGB, RGB, RGB, 255);
-
-        ParticleSystem.MainModule settings = atmosphere.main;
-        settings.startColor = new ParticleSystem.MinMaxGradient(color);
-        Debug.Log("Atmosphäre wird geändert" + color);
-    }
 
     public void ChangeDegree (float change)
     {
@@ -135,6 +125,17 @@ public class Slider : MonoBehaviour
         double roundTemp = Math.Round(currentTemp, 1);
         Debug.Log("gerundete Temperatur: " + roundTemp);
         degree.text = "+" + roundTemp.ToString() + " °C";
+    }
+
+    public void ChangeAtmosphere(int colorValue)
+    {
+        currentColorAtmo += colorValue;
+        byte RGB = (byte)currentColorAtmo;
+        Color color = new Color32(RGB, RGB, RGB, 255);
+
+        ParticleSystem.MainModule settings = atmosphere.main;
+        settings.startColor = new ParticleSystem.MinMaxGradient(color);
+        Debug.Log("Atmosphäre wird geändert" + color);
     }
 
     public void ChangeGrassColor (int colorValue)
@@ -161,12 +162,4 @@ public class Slider : MonoBehaviour
         WaterColor.color = color;
     }
 
-    // if (cowindex< 0)
-    //   {
-    //     cowindex = -1;
-    //     Debug.Log("Zweite If Abfrage, cowindex ist: " + cowindex);
-    // }
-    //cows[cowindex].enabled = increment;
-    //UpdateCowIndex
-    //globeinstanz.transform.GetChild(1).GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = true;
 }
